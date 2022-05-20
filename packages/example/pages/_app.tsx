@@ -17,6 +17,7 @@ import React, { useEffect, useState } from 'react';
 import { chain, createClient, WagmiProvider } from 'wagmi';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
+const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -111,8 +112,11 @@ function App({ Component, pageProps }: AppProps) {
     selectedTermsOfService === 'none'
       ? {}
       : selectedTermsOfService === 'tos'
-      ? { termsOfServiceUrl: 'example.com' }
-      : { disclaimerUrl: 'example.com', termsOfServiceUrl: 'example.com' };
+      ? { termsOfServiceUrl: RAINBOW_TERMS }
+      : {
+          disclaimerUrl: RAINBOW_TERMS,
+          termsOfServiceUrl: RAINBOW_TERMS,
+        };
 
   return (
     <>
